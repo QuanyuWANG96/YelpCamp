@@ -19,8 +19,8 @@ var indexRoutes = require("./routes/index");
 //     .then(success => console.log(success))
 //  .catch(error => console.log(error));
 
-// console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, {useUnifiedTopology: true,useNewUrlParser: true});
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v12";
+mongoose.connect(url, {useUnifiedTopology: true,useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
